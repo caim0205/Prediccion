@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+    <title>Recuperar Contraseña | UNL</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .form-container {
+            padding: 40px;
+            width: 100%;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0073ff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #005bb5;
+        }
+
+        .info-container {
+            background-color: #6c63ff;
+            color: #fff;
+            padding: 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .info-container img {
+            max-width: 300px; /* Agranda el logo */
+            margin-bottom: 20px;
+        }
+
+        .info-container h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .info-container p {
+            font-size: 16px;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-red {
+            background-color: #dc3545;
+            color: #fff;
+            width: auto;
+            padding: 10px 20px;
+            display: block;
+            border-radius: 5px;
+            text-align: center;
+            margin: 20px 0 0 0; /* Espacio arriba y mover a la izquierda */
+        }
+        .btn-red-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 500px;
+        }
+        .btn-red:hover {
+            background-color: #c82333;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .info-container {
+                order: 1;
+            }
+
+            .form-container {
+                order: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="info-container">
+            <img src="{% static 'img/LogoUNLwhite.png' %}" alt="Logo UNL">
+            <h2>Recuperar Contraseña</h2>
+            <p>Ingrese su correo electrónico para recibir un enlace de recuperación de contraseña.</p>
+        </div>
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                <h2>Recuperar Contraseña</h2>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Enviar Enlace de Recuperación</button>
+                </div>
+                {% if mensaje %}
+                <p>{{ mensaje }}</p>
+                {% endif %}
+            </form>
+            <div class="btn-red-container">
+                <a href="{% url 'login' %}" class="btn btn-red mt-3">Volver al login</a>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

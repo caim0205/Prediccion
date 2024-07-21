@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Usuarios</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Gestionar Usuarios</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Rol</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cuenta in cuentas %}
+                    <tr>
+                        <td>{{ cuenta.email }}</td>
+                        <td>{{ cuenta.persona.nombre }}</td>
+                        <td>{{ cuenta.persona.apellido }}</td>
+                        <td>{{ cuenta.rol.nombre }}</td>
+                        <td>{{ cuenta.is_active|yesno:"Activo,Inactivo" }}</td>
+                        <td>
+                            <form method="post" action="{% url 'gestionar_usuarios' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="user_id" value="{{ cuenta.id }}">
+                                <button type="submit" class="btn btn-sm {% if cuenta.is_active %}btn-danger{% else %}btn-success{% endif %}">
+                                    {% if cuenta.is_active %}Desactivar{% else %}Activar{% endif %}
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda - Preguntas Frecuentes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/ayuda.css' %}">
+</head>
+
+<body style="background: url('/static/img/LogoBanco.jpg') no-repeat center center fixed; background-size: cover; margin: 0; padding: 0; height: 100vh;">
+    <div class="nav-logo">
+        <a href="#">
+            <img src="{% static 'img/LogoUNLwhite.png' %}" alt="Logo de la universidad">
+        </a>
+    </div>
+    <div class="container">
+        <h1>Ayuda - Preguntas Frecuentes<br></h1>
+        <div class="faq-item">
+            <h3><br>¿Qué tipo de archivo se puede subir?</h3>
+            <p>Se puede subir un archivo CSV que contenga los datos de los estudiantes.</p>
+        </div>
+        <div class="faq-item">
+            <h3><br>¿Cuáles son las columnas requeridas en el archivo CSV?</h3>
+            <p>El archivo CSV debe contener las siguientes columnas:</p>
+            <ul>
+                <li>nombre</li>
+                <li>promedio_academico</li>
+                <li>asistencia_clases</li>
+                <li>materias_reprobadas</li>
+                <li>apoyo_familiar</li>
+                <li>situacion_socioeconomica</li>
+                <li>trabaja</li>
+                <li>distancia_universidad</li>
+                <li>ciclo</li>
+                <li>materia</li>
+            </ul>
+        </div>
+        <div class="faq-item">
+            <h3><br>¿Qué formato debe tener cada columna?</h3>
+            <p>El formato de cada columna debe ser el siguiente:</p>
+            <ul>
+                <li><strong>nombre:</strong> Texto (nombre del estudiante)</li>
+                <li><strong>promedio_academico:</strong> Número decimal (promedio del estudiante)</li>
+                <li><strong>asistencia_clases:</strong> Número decimal (porcentaje de asistencia)</li>
+                <li><strong>materias_reprobadas:</strong> Número entero (número de materias reprobadas)</li>
+                <li><strong>apoyo_familiar:</strong> Número entero (nivel de apoyo familiar)</li>
+                <li><strong>situacion_socioeconomica:</strong> Texto (bajo, medio, alto)</li>
+                <li><strong>trabaja:</strong> Texto (tiempo completo, parcial, no trabaja)</li>
+                <li><strong>distancia_universidad:</strong> Texto (cerca, medio, lejos)</li>
+                <li><strong>ciclo:</strong> Número entero (número del ciclo académico)</li>
+                <li><strong>materia:</strong> Texto (nombre de la materia)</li>
+            </ul>
+        </div>
+        <div class="faq-item">
+            <h3><br>¿Qué hacer si recibo un error al subir el archivo?</h3>
+            <p>Verifique que el archivo CSV cumpla con los requisitos mencionados anteriormente y que no haya filas con datos faltantes. Si el problema persiste, por favor contacte al soporte técnico.</p>
+        </div>
+    </div>
+    <div class="btn-red-container">
+        <a href="{% url 'inicio' %}" class="btn btn-red mt-3">Volver al inicio</a>
+    </div>
+</body>
+</html>
